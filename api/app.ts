@@ -14,6 +14,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
+app.get('/', (req: Request, res: Response) => {
+  res.send('Root page.')
+})
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404))
@@ -29,7 +33,6 @@ app.use(
       status: (arg0: any) => void
       render: (arg0: string) => void
     },
-    next: any
   ) => {
     // set locals, only providing error in development
     res.locals.message = err.message
@@ -41,9 +44,6 @@ app.use(
   }
 )
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Root page.')
-})
 
 app.listen(PORT, () => {
   console.log(`[server]: Server is running at http://localhost:${PORT}`)
