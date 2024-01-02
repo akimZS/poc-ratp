@@ -1,11 +1,11 @@
-type TypePlatformFields = {
+interface TypePlatformFields {
   line?: string;
   ns3StopPointRef?: string;
   ns3StopName?: string;
   nameLine?: string;
-};
+}
 
-type TypeRawPlatform = {
+interface TypeRawPlatform {
   datasetid: string;
   recordid: string;
   fields: {
@@ -23,7 +23,7 @@ class Platform {
 
   constructor(platform: TypeRawPlatform) {
     this.datasetId = platform.datasetid;
-    this.recordId = platform['recordid'];
+    this.recordId = platform.recordid;
     this.fields = {
       line: platform.fields?.line,
       ns3StopPointRef: platform.fields?.ns3_stoppointref,
@@ -43,31 +43,38 @@ class Platforms extends Array<Platform> {
 
   getFromDatasetId(datasetId: string): Platform[] | null {
     const matches = this.filter((platform: Platform) => platform.datasetId === datasetId);
-    return matches ?? null;
+    return matches.length ? matches : null;
   }
 
   getFromRecordId(recordId: string): Platform[] | null {
     const matches = this.filter((platform: Platform) => platform.recordId === recordId);
-    return matches ?? null;
+    return matches.length ? matches : null;
   }
 
   getFromLine(line: string): Platform[] | null {
     const matches = this.filter((platform: Platform) => platform.fields?.line === line);
-    return matches ?? null;
+    return matches.length ? matches : null;
   }
 
   getFromNS3StopPointRef(ns3StopPointRef: string): Platform[] | null {
     const matches = this.filter(
       (platform: Platform) => platform.fields?.ns3StopPointRef === ns3StopPointRef
     );
-    return matches ?? null;
+    return matches.length ? matches : null;
   }
 
   getFromNS3StopName(ns3StopName: string): Platform[] | null {
     const matches = this.filter(
       (platform: Platform) => platform.fields?.ns3StopName === ns3StopName
     );
-    return matches ?? null;
+    return matches.length ? matches : null;
+  }
+
+  getFromNameLine(nameLine: string): Platform[] | null {
+    const matches = this.filter(
+      (platform: Platform) => platform.fields?.nameLine === nameLine
+    );
+    return matches.length ? matches : null;
   }
 }
 

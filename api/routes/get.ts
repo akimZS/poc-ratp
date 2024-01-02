@@ -23,14 +23,14 @@ router.get('/bus-timetable/:busStationNumber', async (req: Request, res: Respons
   console.log(`
         Nom de station: ${stationName}
         Heure actuelle : ${new Date().toLocaleTimeString('en-GB', {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false
-        })}
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  })}
     `);
 
-  for (let i = 0; i < stationData.length; i++) {
-    const mvj = stationData[i].MonitoredVehicleJourney;
+  for (const station of stationData) {
+    const mvj = station.MonitoredVehicleJourney;
     const line = mvj.OperatorRef.value;
     const direction = mvj.DestinationName[0].value;
     const timeNext = new Date(mvj.MonitoredCall.ExpectedDepartureTime);
@@ -45,10 +45,10 @@ router.get('/bus-timetable/:busStationNumber', async (req: Request, res: Respons
         Ligne: ${line}
         Direction: ${direction}
         Prochain passage: ${timeNext.toLocaleTimeString('en-GB', {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false
-        })} (dans ${timeNextCountdown} ${minuteLabel})
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    })} (dans ${timeNextCountdown} ${minuteLabel})
         `);
   }
   res.send(JSON.stringify(data, null, 2));
