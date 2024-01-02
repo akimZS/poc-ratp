@@ -1,2 +1,3 @@
 import getRoutes from './get';
-export { getRoutes };
+import errorRoutes from "./error"
+export { getRoutes, errorRoutes };
