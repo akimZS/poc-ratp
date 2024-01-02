@@ -1,3 +1,3 @@
 module.exports = {
-    ignorePatterns: ["/*.js", "/*.ts", "cypress/*"],
+    ignorePatterns: ["/*.js", "/*.ts", "cypress/*", "tests/*"],
 }

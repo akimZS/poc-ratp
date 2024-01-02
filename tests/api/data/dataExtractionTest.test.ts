@@ -25,21 +25,13 @@ describe('processed data', async () => {
         catalogueData.getFromDatasetId('perimetre-des-donnees-tr-disponibles-plateforme-idfm')
       );
       assert.isNull(catalogueData.getFromRecordId('Not recordId'));
-      assert.isNotNull(
-        catalogueData.getFromRecordId('975741fb8cbf057c8c788decdf900cfd16bbd951')
-      );
+      assert.isNotNull(catalogueData.getFromRecordId('975741fb8cbf057c8c788decdf900cfd16bbd951'));
       assert.isNull(catalogueData.getFromLine('Not fromLine'));
-      assert.isNotNull(
-        catalogueData.getFromLine('STIF:Line::C01048:')
-      );
+      assert.isNotNull(catalogueData.getFromLine('STIF:Line::C01048:'));
       assert.isNull(catalogueData.getFromNS3StopPointRef('Not fromNS3StopPointRef'));
-      assert.isNotNull(
-        catalogueData.getFromNS3StopPointRef('STIF:StopPoint:Q:6054:')
-      );
+      assert.isNotNull(catalogueData.getFromNS3StopPointRef('STIF:StopPoint:Q:6054:'));
       assert.isNull(catalogueData.getFromNS3StopName('Not fromNS3StopName'));
-      assert.isNotNull(
-        catalogueData.getFromNS3StopName('Lotissement')
-      );
+      assert.isNotNull(catalogueData.getFromNS3StopName('Lotissement'));
     }
   );
 });
