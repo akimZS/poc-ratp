@@ -43,31 +43,38 @@ class Platforms extends Array<Platform> {
 
   getFromDatasetId(datasetId: string): Platform[] | null {
     const matches = this.filter((platform: Platform) => platform.datasetId === datasetId);
-    return matches ?? null;
+    return matches.length ? matches : null;
   }
 
   getFromRecordId(recordId: string): Platform[] | null {
     const matches = this.filter((platform: Platform) => platform.recordId === recordId);
-    return matches ?? null;
+    return matches.length ? matches : null;
   }
 
   getFromLine(line: string): Platform[] | null {
     const matches = this.filter((platform: Platform) => platform.fields?.line === line);
-    return matches ?? null;
+    return matches.length ? matches : null;
   }
 
   getFromNS3StopPointRef(ns3StopPointRef: string): Platform[] | null {
     const matches = this.filter(
       (platform: Platform) => platform.fields?.ns3StopPointRef === ns3StopPointRef
     );
-    return matches ?? null;
+    return matches.length ? matches : null;
   }
 
   getFromNS3StopName(ns3StopName: string): Platform[] | null {
     const matches = this.filter(
       (platform: Platform) => platform.fields?.ns3StopName === ns3StopName
     );
-    return matches ?? null;
+    return matches.length ? matches : null;
+  }
+
+  getFromNameLine(nameLine: string): Platform[] | null {
+    const matches = this.filter(
+      (platform: Platform) => platform.fields?.nameLine === nameLine
+    );
+    return matches.length ? matches : null;
   }
 }
 
