@@ -30,3 +30,5 @@ coverage
 *.tsbuildinfo
 
 .env
+_test.*
+local_test
