@@ -1,11 +1,11 @@
-type TypePlatformFields = {
+interface TypePlatformFields {
   line?: string;
   ns3StopPointRef?: string;
   ns3StopName?: string;
   nameLine?: string;
-};
+}
 
-type TypeRawPlatform = {
+interface TypeRawPlatform {
   datasetid: string;
   recordid: string;
   fields: {
@@ -23,7 +23,7 @@ class Platform {
 
   constructor(platform: TypeRawPlatform) {
     this.datasetId = platform.datasetid;
-    this.recordId = platform['recordid'];
+    this.recordId = platform.recordid;
     this.fields = {
       line: platform.fields?.line,
       ns3StopPointRef: platform.fields?.ns3_stoppointref,

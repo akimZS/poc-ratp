@@ -1,16 +1,5 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.vitest.json"
-    }
-  ],
+  "include": ["*.ts", "*.js", "./api/**/*.ts", "./src/**/*.ts", ".eslintrc.cjs"],
   "compilerOptions": {
     "esModuleInterop": true,
     "module": "NodeNext"
