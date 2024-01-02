@@ -1,5 +1,6 @@
-import { Router } from 'express';
+import { Request, Response, Router } from 'express';
 import createError from 'http-errors';
+import "../__globals"
 
 const router = Router();
 
@@ -11,13 +12,9 @@ router.use(function (req, res, next) {
 // error handler
 router.use(
   (
-    err: { message: any; status: any },
-    req: { app: { get: (arg0: string) => string } },
-    res: {
-      locals: { message: any; error: any };
-      status: (arg0: any) => void;
-      render: (arg0: string) => void;
-    }
+    err: Error,
+    req: Request,
+    res: Response
   ) => {
     // set locals, only providing error in development
     res.locals.message = err.message;

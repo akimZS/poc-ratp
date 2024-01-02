@@ -1,17 +1,28 @@
-type PlatformFields = {
+type TypePlatformFields = {
   line?: string;
   ns3StopPointRef?: string;
   ns3StopName?: string;
   nameLine?: string;
 };
 
+type TypeRawPlatform = {
+  datasetid: string;
+  recordid: string;
+  fields: {
+    line?: string;
+    ns3_stoppointref?: string;
+    name_line?: string;
+    ns3_stopname?: string;
+  }
+}
+
 class Platform {
   public datasetId: string;
   public recordId: string;
-  public fields: PlatformFields;
+  public fields: TypePlatformFields;
 
-  constructor(platform: Record<string, any>) {
-    this.datasetId = platform['datasetid'];
+  constructor(platform: TypeRawPlatform) {
+    this.datasetId = platform.datasetid;
     this.recordId = platform['recordid'];
     this.fields = {
       line: platform.fields?.line,
@@ -23,7 +34,7 @@ class Platform {
 }
 
 class Platforms extends Array<Platform> {
-  init(data: Record<string, any>[]) {
+  init(data: TypeRawPlatform[]) {
     for (const entry of data) {
       this.push(new Platform(entry));
     }
@@ -60,4 +71,4 @@ class Platforms extends Array<Platform> {
   }
 }
 
-export { Platform, Platforms, PlatformFields };
+export { Platform, Platforms, TypePlatformFields };
