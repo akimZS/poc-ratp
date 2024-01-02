@@ -11,7 +11,6 @@ export const data = test.extend({
     );
 
     const platforms = new Platforms().init(JSON.parse(catalogueData))
-    console.log(platforms[0])
     await use(platforms);
   }
 });
