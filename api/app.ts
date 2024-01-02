@@ -32,7 +32,7 @@ app.get('/bus-timetable/:busStationNumber', async (req: Request, res: Response) 
   const stationData = data.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit;
   
   // Print station data
-  const stationName = JSON.stringify(stationData[0].MonitoredVehicleJourney.MonitoredCall.StopPointName[0].value);
+  const stationName = stationData[0].MonitoredVehicleJourney.MonitoredCall.StopPointName[0].value;
   console.log(`
     Nom de station: ${stationName}
     Heure actuelle : ${new Date().toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit', hour12: false})}
@@ -48,9 +48,9 @@ app.get('/bus-timetable/:busStationNumber', async (req: Request, res: Response) 
     const minuteLabel = parseFloat(timeNextCountdown) > 1 ? "minutes" : "minute";
 
     console.log((`
-      Ligne: ${line}
-      Direction: ${direction}
-      Prochain passage: ${timeNext.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit', hour12: false})} (dans ${timeNextCountdown} ${minuteLabel})
+    Ligne: ${line}
+    Direction: ${direction}
+    Prochain passage: ${timeNext.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit', hour12: false})} (dans ${timeNextCountdown} ${minuteLabel})
     `))  
   }
   res.send(JSON.stringify(data, null, 2))
