@@ -1,0 +1,7 @@
+{
+  "include": ["*.ts", "*.js", "./api/**/*.ts", "./src/**/*.ts", ".eslintrc.cjs"],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "NodeNext"
+  }
+}

@@ -1,0 +1,25 @@
+name: Lint ts
+
+on: [push, workflow_dispatch]
+
+jobs:
+  run-linters:
+    name: Run eslint
+    runs-on:
+      - ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      
+      - name: setup nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: install dependencies
+        run: npm ci
+        
+      - name: lint check
+        run: npm run lint
